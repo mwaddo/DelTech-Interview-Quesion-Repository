@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Bradley Waddington, Sebastian Gomez, John J Pedicone, Zoe Ebright">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="DelTech's interview question repository.">
+                <!-- The core Firebase JS SDK is always required and must be listed first -->
+                <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+
+                <!-- TODO: Add SDKs for Firebase products that you want to use
+                    https://firebase.google.com/docs/web/setup#available-libraries -->
+                <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+        
+                <script>
+                    // Your web app's Firebase configuration
+                    var firebaseConfig = {
+                        apiKey: "AIzaSyC0Scj33I2yzBfdfj2-whRqCZD-midbLNo",
+                        authDomain: "deltech-question-repository.firebaseapp.com",
+                        databaseURL: "https://deltech-question-repository.firebaseio.com",
+                        projectId: "deltech-question-repository",
+                        storageBucket: "deltech-question-repository.appspot.com",
+                        messagingSenderId: "496754076532",
+                        appId: "1:496754076532:web:826db8d122618be2a11a21",
+                        measurementId: "G-W7C6LBJT1J"
+                    };
+                    // Initialize Firebase
+                    firebase.initializeApp(firebaseConfig);
+                    firebase.analytics();
+                    const db = firebase.firestore();
+                </script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg" style="background-color: #f8f9fa" id="navbar">
+            <div class="d-flex flex-grow-1">
+                <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
+                <a class="navbar-brand" href="#">
+                    <img src="images/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="The DelTech logo.">
+                </a>
+                <div class="w-100 text-right">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="navbar-collapse flex-grow-1 text-right">
+                <ul class="navbar-nav ml-auto flex-nowrap">
+                    <li class="nav-item">
+                        <button class="btn btn-success ml-auto mr-1">Discussion</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-success ml-auto mr-1">Profile</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container flex-grow-1 mt-5" id="mainPage">
+            <input type="text" placeholder="Search..">
+            <button class="btn btn-success float-right">Submit +</button>
+            <div class="container">
+                <table id="question-table">
+                    <tr>
+                        <th>#</th>
+                        <th class="question-box">Question</th>
+                        <th>Employer</th>
+                        <th>Type</th>
+                        <th>Sector</th>
+                        <th>Job Title</th>
+                        <th>Rating</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="scripts.js"></script>
+    </body>
+
+</html>

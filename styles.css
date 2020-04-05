@@ -1,0 +1,18 @@
+th, td {
+    padding: 15px;
+}
+
+table {
+    border-spacing: 5px;
+}
+
+.question-box{
+    border-spacing: 500px;
+    padding-left: 280px;
+    padding-right: 280px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
