@@ -38,7 +38,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
-
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <a class="navbar-brand" href="mainpage.html">
@@ -58,25 +57,38 @@
               </ul>
             </div>
           </nav>
-
-        <div class="container flex-grow-1" id="mainPage" style="margin-top: 4em;">
-            <input type="text" placeholder="Search..">
-            <button class="btn btn-success float-right" onclick="location.href='questionsubmission.html'">Submit +</button>
-            <div class="container">
-                <table id="question-table">
-                    <tr>
-                        <th>#</th>
-                        <th class="question-box">Question</th>
-                        <th>Employer</th>
-                        <th>Type</th>
-                        <th>Sector</th>
-                        <th>Job Title</th>
-                        <th>Rating</th>
-                    </tr>
-                </table>
-            </div>
+        
+        <h1 class="text-center" style="margin-top: 6em;">Submit a question</h1>
+        <div class="container border">
+            <form id="question-form">
+                <div class="form-group">
+                <label for="question">Question</label>
+                    <input type="question" class="form-control" name="question" id="question" aria-describedby="question" placeholder="Enter question..">
+                </div>
+                <div class="form-group">
+                <label for="employer">Employer</label>
+                    <input type="employer" class="form-control" name="employer" id="employer" placeholder="Enter employer..">
+                </div>
+                <label for="type">Type</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="radios" id="behavioral" value="Behavioral">
+                    <label class="form-check-label" for="inlineRadio1">Behavioral</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="radios" id="technical" value="Technical">
+                    <label class="form-check-label" for="inlineRadio2">Technical</label>
+                </div><br>
+                <div class="form-group">
+                    <label for="sector">Sector</label>
+                    <input type="sector" class="form-control" name="sector" id="sector" placeholder="Enter sector..">
+                </div>
+                <div class="form-group">
+                    <label for="jobtitle">Job Title</label>
+                    <input type="jobtitle" class="form-control" name="jobtitle" id="jobtitle" placeholder="Enter job title..">
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
         </div>
-        <script src="scripts.js"></script>
     </body>
-
+    <script src="scripts.js"></script>
 </html>

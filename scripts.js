@@ -2,6 +2,11 @@ var fragment = document.createDocumentFragment();
 const questionTable = document.querySelector('#question-table');
 var counter = 0;
 
+var radios = document.getElementsByName('radios');
+var selectedRadio;
+
+const form = document.querySelector('#question-form');
+
 // create element and render quesions
 function renderQuestion(doc){
     var tr = document.createElement("tr");
@@ -40,3 +45,27 @@ db.collection('Questions').get().then((snapshot) => {
         renderQuestion(doc);
     })
 })
+
+// save data
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    db.collection('Questions').add({
+        question: form.question.value,
+        employer: form.employer.value,
+        type: displayRadioValue(),
+        sector: form.sector.value,
+        jobtitle: form.jobtitle.value
+    });
+});
+
+function displayRadioValue() { 
+    var radios = document.getElementsByName('radios'); 
+      
+    for(i = 0; i < radios.length; i++) { 
+        if(radios[i].checked){
+            console.log(radios[i].value);
+            return radios[i].value;
+        }
+       
+    } 
+}
