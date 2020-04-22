@@ -4,6 +4,7 @@ th, td {
 
 table {
     border-spacing: 5px;
+    width: 10em;
 }
 
 .question-box{
