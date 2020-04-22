@@ -26,6 +26,6 @@ signUpForm.addEventListener('submit', (e)=>{
        window.alert("Your account has been created!")
       signUpForm.reset();
       window.location.href = "login.html"
-   })
+   });
 
-})
+});
