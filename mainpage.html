@@ -10,6 +10,7 @@
                 <!-- The core Firebase JS SDK is always required and must be listed first -->
                 <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
                 <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
 
                 <!-- TODO: Add SDKs for Firebase products that you want to use
                     https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -51,29 +52,25 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ml-auto flex-nowrap">
                 <li class="nav-item">
-                  <button class="btn btn-success ml-auto mr-1">Discussion</button>
-              </li>
-              <li class="nav-item">
-                  <button class="btn btn-success ml-auto mr-1">Profile</button>
-              </li>
+                    <button class="btn btn-success ml-auto mr-1" id="btnLogout" onclick="logout()">Log out</button>
+                </li>
               </ul>
             </div>
           </nav>
 
         <div class="container flex-grow-1" id="mainPage" style="margin-top: 4em;">
-            <input type="text" placeholder="Search..">
-            <button class="btn btn-success" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?"><i class="fas fa-filter"></i></button>
+            <input type="text" id="search" onkeyup="searchByQuesion()" placeholder="Search..">
             <button class="btn btn-success float-right" onclick="location.href='questionsubmission.html'">Submit +</button>
             <div class="container">
                 <table id="question-table">
                     <tr>
-                        <th>#</th>
-                        <th class="question-box">Question</th>
-                        <th>Employer</th>
-                        <th>Type</th>
-                        <th>Sector</th>
-                        <th>Job Title</th>
-                        <th>Rating</th>
+                        <th onclick="sortTable(0)">#<i class="fas fa-sort d-inline"></i></th>
+                        <th class="question-box" id="questions" onclick="sortTable(1)">Question<i class="fas fa-sort d-inline"></i></th>
+                        <th id="employers" onclick="sortTable(2)">Employer<i class="fas fa-sort d-inline"></i></th>
+                        <th id="types" onclick="sortTable(3)">Type<i class="fas fa-sort d-inline"></i></th>
+                        <th id="sectors" onclick="sortTable(4)">Sector<i class="fas fa-sort d-inline"></i></th>
+                        <th id="jobtitles" onclick="sortTable(5)">Job Title <i class="fas fa-sort d-inline"></i></th>
+                        <th id="ratings" onclick="sortTable(6)">Rating<i class="fas fa-sort d-inline"></i></th>
                     </tr>
                 </table>
             </div>

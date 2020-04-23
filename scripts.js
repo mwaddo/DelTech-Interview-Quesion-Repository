@@ -7,7 +7,16 @@ var selectedRadio;
 
 const form = document.querySelector('#question-form');
 
-// create element and render quesions
+// array of strings for sorting
+var numbers =[];
+var questions = [];
+var employers = [];
+var types = [];
+var sectors = [];
+var jobtitles = [];
+var ratings = [];
+
+// create element and render questions
 function renderQuestion(doc){
     var tr = document.createElement("tr");
     let number = document.createElement("td")
@@ -28,6 +37,15 @@ function renderQuestion(doc){
     jobtitle.textContent = doc.data().jobtitle;
     rating.textContent = "-";
 
+    // adding elements to arrys for sorting
+    numbers.push(number.textContent);
+    questions.push(question.textContent);
+    employers.push(employer.textContent);
+    types.push(type.textContent);
+    sectors.push(sector.textContent);
+    jobtitles.push(jobtitle.textContent);
+    ratings.push(rating.textContent);
+
     tr.appendChild(number);
     tr.appendChild(question);
     tr.appendChild(employer);
@@ -46,7 +64,7 @@ db.collection('Questions').get().then((snapshot) => {
     })
 })
 
-// save data
+// save form data to firebase
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -64,7 +82,7 @@ form.addEventListener('submit', (e) => {
     }
 });
 
-// input validation
+// input validation for the question submission form
 function formValidation(){
     if(form.question.value == "" || form.question.value.trim().length == 0){
         alert('Error: question field is empty.');
@@ -104,6 +122,7 @@ function formValidation(){
     }
 }
 
+// get value of radio on form, technical or behavioral
 function displayRadioValue() { 
     var radios = document.getElementsByName('radios'); 
       
@@ -116,6 +135,72 @@ function displayRadioValue() {
     } 
 }
 
-$(function () {
-    $('[data-toggle="popover"]').popover()
-});
+const btnLogout = document.getElementById('btnLogout');
+
+// logout
+function logout(){
+    firebase.auth().signOut();
+    window.location.href = "login.html";
+    console.log("logging out");
+}
+
+// search all table rows for specific inputs
+function searchByQuesion(){
+    var input, filter, tr, td, i;
+    input = document.getElementById("search");
+    filter = input.value.toUpperCase();
+    tr = questionTable.getElementsByTagName("tr");
+
+    for (i = 1; i < tr.length; i++) {
+        // Hide the row initially.
+        tr[i].style.display = "none";
+    
+        td = tr[i].getElementsByTagName("td");
+        for (var j = 0; j < td.length; j++) {
+          cell = tr[i].getElementsByTagName("td")[j];
+          if (cell) {
+            if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+              break;
+            } 
+          }
+        }
+    }
+}
+
+// sort tables in descending or ascending order alphabetically or numerically
+function sortTable(n) {
+    var rows, switching, i, first, second, shouldSwitch, dir, switchcount = 0;
+    switching = true;
+    dir = "asc";
+    while (switching) {
+      switching = false;
+      rows = questionTable.rows;
+      for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        first = rows[i].getElementsByTagName("td")[n];
+        second = rows[i + 1].getElementsByTagName("td")[n];
+        if (dir == "asc") {
+          if (first.innerHTML.toLowerCase() > second.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (first.innerHTML.toLowerCase() < second.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        switchcount ++;
+      } else {
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
