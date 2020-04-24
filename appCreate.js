@@ -10,22 +10,22 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const auth= firebase.auth();
+const auth = firebase.auth();
 
-const signUpForm=document.querySelector('#signUp-form');
-signUpForm.addEventListener('submit', (e)=>{
+const signUpForm = document.querySelector('#signUp-form');
+signUpForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     //get user info
-    const email= signUpForm['signUpEmail'].value;
-    const password= signUpForm['signUpPass'].value;
+    const email = signUpForm['signUpEmail'].value;
+    const password = signUpForm['signUpPass'].value;
 
     //sign up the user
-   auth.createUserWithEmailAndPassword(email,password).then(cred=>{
-       console.log(cred.user);
-       window.alert("Your account has been created!")
-      signUpForm.reset();
-      window.location.href = "login.html"
-   });
+    auth.createUserWithEmailAndPassword(email, password).then(cred => {
+        console.log(cred.user);
+        window.alert("Your account has been created!")
+        signUpForm.reset();
+        window.location.href = "login.html"
+    });
 
 });

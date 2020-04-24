@@ -2,91 +2,95 @@
 
 <html lang="en">
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="author" content="Bradley Waddington, Sebastian Gomez, John J Pedicone, Zoe Ebright">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="DelTech's interview question repository.">
-                <!-- The core Firebase JS SDK is always required and must be listed first -->
-                <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
 
-                <!-- TODO: Add SDKs for Firebase products that you want to use
-                    https://firebase.google.com/docs/web/setup#available-libraries -->
-                <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
-        
-                <script>
-                    // Your web app's Firebase configuration
-                    var firebaseConfig = {
-                        apiKey: "AIzaSyC0Scj33I2yzBfdfj2-whRqCZD-midbLNo",
-                        authDomain: "deltech-question-repository.firebaseapp.com",
-                        databaseURL: "https://deltech-question-repository.firebaseio.com",
-                        projectId: "deltech-question-repository",
-                        storageBucket: "deltech-question-repository.appspot.com",
-                        messagingSenderId: "496754076532",
-                        appId: "1:496754076532:web:826db8d122618be2a11a21",
-                        measurementId: "G-W7C6LBJT1J"
-                    };
-                    // Initialize Firebase
-                    firebase.initializeApp(firebaseConfig);
-                    firebase.analytics();
-                    const db = firebase.firestore();
-                </script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <a class="navbar-brand" href="mainpage.html">
-                <img src="images/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="The DelTech logo.">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto flex-nowrap">
-              <li class="nav-item">
-                <button class="btn btn-success ml-auto mr-1" id="btnLogout" onclick="logout()">Log out</button>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Bradley Waddington, Sebastian Gomez, John J Pedicone, Zoe Ebright">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DelTech's interview question repository.">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyC0Scj33I2yzBfdfj2-whRqCZD-midbLNo",
+            authDomain: "deltech-question-repository.firebaseapp.com",
+            databaseURL: "https://deltech-question-repository.firebaseio.com",
+            projectId: "deltech-question-repository",
+            storageBucket: "deltech-question-repository.appspot.com",
+            messagingSenderId: "496754076532",
+            appId: "1:496754076532:web:826db8d122618be2a11a21",
+            measurementId: "G-W7C6LBJT1J"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const db = firebase.firestore();
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="mainpage.html">
+            <img src="images/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="The DelTech logo.">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <button class="btn btn-success ml-auto mr-1" id="btnLogout" onclick="logout()">Log out</button>
                 </li>
-              </ul>
-            </div>
-          </nav>
-        
-        <h1 class="text-center" style="margin-top: 6em;">Submit a question</h1>
-        <div class="container border">
-            <form id="question-form">
-                <div class="form-group">
-                <label for="question">Question</label>
-                    <input type="question" class="form-control" name="question" id="question" aria-describedby="question" placeholder="Enter question..">
-                </div>
-                <div class="form-group">
-                <label for="employer">Employer</label>
-                    <input type="employer" class="form-control" name="employer" id="employer" placeholder="Enter employer..">
-                </div>
-                <label for="type">Type</label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="radios" id="behavioral" value="Behavioral">
-                    <label class="form-check-label" for="inlineRadio1">Behavioral</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="radios" id="technical" value="Technical">
-                    <label class="form-check-label" for="inlineRadio2">Technical</label>
-                </div><br>
-                <div class="form-group">
-                    <label for="sector">Sector</label>
-                    <input type="sector" class="form-control" name="sector" id="sector" placeholder="Enter sector..">
-                </div>
-                <div class="form-group">
-                    <label for="jobtitle">Job Title</label>
-                    <input type="jobtitle" class="form-control" name="jobtitle" id="jobtitle" placeholder="Enter job title..">
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
+            </ul>
         </div>
-    </body>
-    <script src="scripts.js"></script>
+    </nav>
+
+    <h1 class="text-center" style="margin-top: 2em">Submit a question</h1>
+    <div class="container">
+        <form id="question-form">
+            <div class="form-group">
+                <label for="question">Question</label>
+                <input type="question" class="form-control" name="question" id="question" aria-describedby="question" placeholder="Enter question..">
+            </div>
+            <div class="form-group">
+                <label for="employer">Employer</label>
+                <input type="employer" class="form-control" name="employer" id="employer" placeholder="Enter employer..">
+            </div>
+            <label for="type">Type</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radios" id="behavioral" value="Behavioral">
+                <label class="form-check-label" for="inlineRadio1">Behavioral</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radios" id="technical" value="Technical">
+                <label class="form-check-label" for="inlineRadio2">Technical</label>
+            </div><br>
+            <div class="form-group">
+                <label for="sector">Sector</label>
+                <input type="sector" class="form-control" name="sector" id="sector" placeholder="Enter sector..">
+            </div>
+            <div class="form-group">
+                <label for="jobtitle">Job Title</label>
+                <input type="jobtitle" class="form-control" name="jobtitle" id="jobtitle" placeholder="Enter job title..">
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</body>
+<script src="scripts.js"></script>
+
 </html>

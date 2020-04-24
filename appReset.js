@@ -10,22 +10,22 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const auth= firebase.auth();
+const auth = firebase.auth();
 
 const Reset = document.querySelector('#forgotPass');
 
-Reset.addEventListener('submit', (e)=> {
-   e.preventDefault();
+Reset.addEventListener('submit', (e) => {
+    e.preventDefault();
 
     //get user info
     const emailAddress = Reset['email'].value;
 
-    auth.sendPasswordResetEmail(emailAddress).then(function() {
+    auth.sendPasswordResetEmail(emailAddress).then(function () {
         // Email sent.
 
         window.alert("Email sent! check your email to reset password")
         Reset.reset();
-    }).catch(function(error) {
+    }).catch(function (error) {
         // An error happened.
     });
 
