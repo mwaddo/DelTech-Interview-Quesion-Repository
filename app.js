@@ -15,7 +15,7 @@ firebase.initializeApp(firebaseConfig);
 const txtEmail = document.getElementById('email');
 const txtPassword = document.getElementById('password');
 const btnLogin = document.getElementById('boton');
-const form= document.querySelector('#form');
+const form = document.querySelector('#form');
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
@@ -30,10 +30,10 @@ btnLogin.addEventListener('click', e => {
     e.preventDefault();
     console.log("logging in...");
     const email = txtEmail.value;
-    const pass= txtPassword.value;
+    const pass = txtPassword.value;
     const auth = firebase.auth();
     const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(e=> window.alert("Error: "+ e.message));
+    promise.catch(e => window.alert("Error: " + e.message));
     form.reset();
 });
 
