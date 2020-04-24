@@ -79,6 +79,7 @@ form.addEventListener('submit', (e) => {
             jobtitle: form.jobtitle.value
         });
         alert("Question submitted");
+        deselectRadio();
         form.question.value = "";
         form.employer.value = "";
         form.sector.value = "";
@@ -141,6 +142,13 @@ function displayRadioValue() {
       return radios[i].value;
     }
 
+  }
+}
+
+function deselectRadio(){
+  var radios = document.getElementsByName('radios');
+  for(var i=0; i<radios.length;i++){
+    radios[i].checked = false;
   }
 }
 
