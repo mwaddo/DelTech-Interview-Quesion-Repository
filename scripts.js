@@ -78,7 +78,7 @@ form.addEventListener('submit', (e) => {
             sector: form.sector.value,
             jobtitle: form.jobtitle.value
         });
-
+      window.location.href="redirect.html";
     }
 });
 
