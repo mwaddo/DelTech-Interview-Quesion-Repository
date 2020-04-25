@@ -14,7 +14,16 @@ var sectors = [];
 var jobtitles = [];
 var ratings = [];
 
+//message welcome
+const auth= firebase.auth();
+const welcome= document.getElementById("textWelcome");
+auth.onAuthStateChanged(user=>{
 
+  if(user){
+    welcome.innerHTML=("Welcome user: "+ user.email), user;
+  }
+
+});
 
 // create element and render questions
 function renderQuestion(doc) {
